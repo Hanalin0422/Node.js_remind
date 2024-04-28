@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+</head>
+<body class="grey-bg">
+    <!-- <%= JSON.stringify(글목록) %> -->
+
+    <%- include('nav.ejs') %>
+
+    <button onclick="location.href='/write'">글 작성하러 가기</button>
+    <div class="white-bg">
+        <% for(let i=0; i< 글목록.length; i++){ %>
+            <div class="list-box">
+                <a href="/detail/<%= 글목록[i]._id %>">
+                    <h4><%= 글목록[i].title %></h4>
+                </a>
+                <p><%= 글목록[i].content %></p>
+                <p><%= 시간 %></p>
+            </div>
+        <% } %>
+            
+        
+    </div> 
+</body>
+</html>
