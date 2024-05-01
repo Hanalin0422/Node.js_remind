@@ -1,6 +1,10 @@
 body {
 margin: 0;
 }
+a {
+    text-decoration: none;
+    color: black;
+}
 .nav {
 display: flex;
 padding: 15px;
@@ -62,4 +66,23 @@ border-radius: 5px;
     background: white;
     padding: 15px;
     margin-top: 10px;
+}
+.amend{
+    float: right;
+    margin: 20px;
+}
+.delete{
+    cursor: pointer;
+}
+.signup{
+    font-size: larger;
+}
+.signup:hover{
+    font-weight: 900;
+}
+.a{
+    padding: 30px;
+}
+.aaa{
+    padding: 30px;
 }

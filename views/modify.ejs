@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+</head>
+<body class="grey-bg">
+
+    <%- include('nav.ejs') %>
+
+    <form class="form-box" action="/detail/<%= id %>/modify" method="POST">
+        <div class="detail-bg">
+            <input name="title" value="<%= title %>">
+            <input name="content" value="<%= content %>">
+            <button type="submit">저장하기</button>
+        </div> 
+    </form>
+    
+    <button onClick="location.href='/list'">뒤로 돌아가기</button>
+</body>
+</html>

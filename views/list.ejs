@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
 </head>
 </head>
 <body class="grey-bg">
@@ -14,17 +14,44 @@
 
     <button onclick="location.href='/write'">글 작성하러 가기</button>
     <div class="white-bg">
-        <% for(let i=0; i< 글목록.length; i++){ %>
+        <% for(let i=글목록.length-1; i >=0 ; i--){ %>
             <div class="list-box">
                 <a href="/detail/<%= 글목록[i]._id %>">
                     <h4><%= 글목록[i].title %></h4>
                 </a>
                 <p><%= 글목록[i].content %></p>
                 <p><%= 시간 %></p>
+                <span class="delete" data-id="<%= 글목록[i]._id %>">🗑️</span>
             </div>
         <% } %>
             
         
-    </div> 
+    </div>
+    <script>
+        for(let i=0; i< '<%= 글목록.length %>'; i++){
+            document.querySelectorAll('.delete')[i]
+            .addEventListener('click', function(e){
+                fetch('/list/delete?docid=' + e.target.dataset.id, {
+                    method : 'DELETE'
+                })
+                .then((r)=>r.text()) // 서버가 보내는게 text이면 이렇게. object나 array일 경우 .json()
+                .then((r)=>{
+                    console.log(r)// r은 서버가 보낸 데이터임.
+                    e.target.parentElement.style.display = 'none' // 부모 html 가져옴
+                }) 
+            })
+        }
+    </script>
 </body>
 </html>
+
+<!-- document.querySelectorAll('.delete')[0].addEventListener('click', function(){
+            fetch('/url~~', {
+                method : 'DELETE',
+                headers  :{
+                    'Content-Type' : 'application/json'
+                },
+                body : '데이터' JSON.stringify({a : 1})
+            })
+        }) -->
+
