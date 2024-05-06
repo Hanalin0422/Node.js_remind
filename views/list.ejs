@@ -13,6 +13,19 @@
     <%- include('nav.ejs') %>
 
     <button onclick="location.href='/write'">글 작성하러 가기</button>
+    <div class="bbb">
+        <input type="text" class="search">
+        <button class="search-send">검색</button>
+    </div>
+
+    <script>
+        document.querySelector('.search-send').addEventListener('click', function(){
+            let 입력한거 = document.querySelector('.search').value;
+            location.href='/search?val=' + 입력한거;
+        })
+    </script>
+
+    
     <div class="white-bg">
         <% for(let i=글목록.length-1; i >=0 ; i--){ %>
             <div class="list-box">
@@ -36,8 +49,10 @@
                 })
                 .then((r)=>r.text()) // 서버가 보내는게 text이면 이렇게. object나 array일 경우 .json()
                 .then((r)=>{
-                    console.log(r)// r은 서버가 보낸 데이터임.
-                    e.target.parentElement.style.display = 'none' // 부모 html 가져옴
+                    console.log(r.deletedCount)// r은 서버가 보낸 데이터임.
+                    if(r.deletedCount !== undefined){
+                        e.target.parentElement.style.display = 'none' // 부모 html 가져옴
+                    }
                 }) 
             })
         }

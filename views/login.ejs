@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+</head>
+<body class="grey-bg">
+
+    <%- include('nav.ejs') %>
+
+    <form class="form-box" action="/login" method="POST">
+            <p>아이디</p>
+            <input type="text" name="username">
+            <p>비밀번호</p>
+            <input type="password" name="password">
+            <button type="submit">로그인</button>
+    </form>
+    <button onclick="history.go(-1)">뒤로 가기</button>
+
+
+</body>
+</html>

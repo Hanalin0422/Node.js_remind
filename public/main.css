@@ -86,3 +86,15 @@ border-radius: 5px;
 .aaa{
     padding: 30px;
 }
+.bbb{
+    float: right;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+.search-send{
+    padding : 6px 10px;
+    background: lightgray;
+    border: none;
+    border-radius: 5px;
+    vertical-align: middle;
+}

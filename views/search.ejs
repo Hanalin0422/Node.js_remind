@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+</head>
+<body class="grey-bg">
+
+    <%- include('nav.ejs') %>
+
+    <button onclick="location.href='/write'">글 작성하러 가기</button>
+    <div class="bbb">
+        <input type="text" class="search">
+        <button class="search-send">검색</button>
+    </div>
+
+    <script>
+        document.querySelector('.search-send').addEventListener('click', function(){
+            let 입력한거 = document.querySelector('.search').value;
+            location.href='/search?val=' + 입력한거;
+        })
+    </script>
+
+    <h4>검색 결과</h4>
+
+    <div class="white-bg">
+        <% for(let i=검색결과.length-1; i >=0 ; i--){ %>
+            <div class="list-box">
+                <a href="/detail/<%= 검색결과[i]._id %>">
+                    <h4><%= 검색결과[i].title %></h4>
+                </a>
+                <p><%= 검색결과[i].content %></p>
+                <span class="delete" data-id="<%= 검색결과[i]._id %>">🗑️</span>
+            </div>
+        <% } %>
+            
+        
+    </div>
+</body>
+</html>
+
+<!-- document.querySelectorAll('.delete')[0].addEventListener('click', function(){
+            fetch('/url~~', {
+                method : 'DELETE',
+                headers  :{
+                    'Content-Type' : 'application/json'
+                },
+                body : '데이터' JSON.stringify({a : 1})
+            })
+        }) -->
+
